@@ -14,9 +14,9 @@ http://php.net/manual/en/language.constants.predefined.php
 class CCIndex implements IController {
 
     public function Index() {   
-    global $ly;
+    global $raj;
          
-       	$ly->data['title'] = "The Index Controller";
+       	$raj->data['title'] = "The Index Controller";
        }
 
     } 

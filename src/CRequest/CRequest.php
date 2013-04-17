@@ -14,19 +14,33 @@ http://php.net/manual/en/language.constants.predefined.php
 class CRequest {
 
 /* -------------------------------------------------
+MEMBER VARIBLES
+------------------------------------------------- */
+  public $cleanUrl;
+  public $querystringUrl;
+
+/* -------------------------------------------------
+URL-TYPE
+------------------------------------------------- */
+  public function __construct($urlType=0) {
+    $this->cleanUrl       = $urlType= 1 ? true : false;
+    $this->querystringUrl = $urlType= 2 ? true : false;
+  }
+  
+/* -------------------------------------------------
 INIT
 ------------------------------------------------- */
 
-	public function init() {
+	public function init($baseUrl = NULL) {
 
 		$requestUri = $_SERVER['REQUEST_URI'];
-   		$scriptName = $_SERVER['SCRIPT_NAME'];    
+   	$scriptPart = $scriptName = $_SERVER['SCRIPT_NAME']; 
 
         if(substr_compare($requestUri, $scriptName, 0, strlen($scriptName))) {
-          $scriptPart = dirname($scriptName);
+        $scriptPart = dirname($scriptName);
         }
 
-        $query = trim(substr($requestUri, strlen(rtrim($scriptPart, '/'))), '/'); 
+    $query = trim(substr($requestUri, strlen(rtrim($scriptPart, '/'))), '/'); 
 
         // Check if this looks like a querystring approach link
         if(substr($query, 0, 1) === '?' && isset($_GET['q'])) {
@@ -43,8 +57,8 @@ INIT
 		$this->request_uri = $_SERVER['REQUEST_URI'];
 		$this->script_name = $_SERVER['SCRIPT_NAME'];
 
-		$this->query		= $query;
-		$this->splits		= $splits;
+		$this->query		  = $query;
+		$this->splits		  = $splits;
 		$this->controller	= $controller;
 		$this->method 		= $method;
 		$this->arguments	= $arguments;
@@ -61,9 +75,9 @@ INIT
 	    $this->request_uri  = $requestUri;
 	    $this->script_name  = $scriptName;
 	    $this->query        = $query;
-	    $this->splits        = $splits;
-	    $this->controller    = $controller;
-	    $this->method        = $method;
+	    $this->splits       = $splits;
+	    $this->controller   = $controller;
+	    $this->method       = $method;
 	    $this->arguments    = $arguments;
    }  
 

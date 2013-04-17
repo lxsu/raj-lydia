@@ -21,12 +21,12 @@ Dessa behövs i varje förfrågan
 // PHASE: BOOTSTRAP
 //
 
-define('LYDIA_INSTALL_PATH', dirname(__FILE__));
-define('LYDIA_SITE_PATH', LYDIA_INSTALL_PATH . '/site');
+define('RAJ_INSTALL_PATH', dirname(__FILE__));
+define('RAJ_SITE_PATH', RAJ_INSTALL_PATH . '/site');
 
-require(LYDIA_INSTALL_PATH.'/src/CLydia/bootstrap.php');
+require(RAJ_INSTALL_PATH.'/src/CRaj/bootstrap.php');
 
-$ly = CLydia::Instance();
+$raj = CRaj::Instance();
 
 /* -------------------------------------------------
 "frontController->route" tar hand om förfrågan och tolkar ut vilken kontroller och metod
@@ -36,7 +36,7 @@ som skall anropas. Därefter sker all bearbetning i kontrollern
 // PHASE: FRONTCONTROLLER ROUTE
 //
 
-$ly->FrontControllerRoute();
+$raj->FrontControllerRoute();
 
 /* -------------------------------------------------
 "themeEngine->render" skapar själva slutresultatet, webbsidan. Allt innehåll finns tillgängligt
@@ -46,4 +46,4 @@ och med hjälp av template-filer överförs innehållet till HTML-filer.
 // PHASE: THEME ENGINE RENDER
 //
 
-$ly->ThemeEngineRender();
+$raj->ThemeEngineRender();

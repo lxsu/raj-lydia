@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  # Must use RewriteBase on www.student.bth.se, Rewritebase for url /~rojo13/mvc/kmom02 is /~rojo13/mvc/kmom02/
+  RewriteBase /~rojo13/mvc/kmom07/raj/
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule (.*) index.php/$1 [NC,L]
+</IfModule>
